@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Benimle Barışır mısın Feride'm?</title>
   <style>
     body {
@@ -38,7 +38,6 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      position: relative;
     }
     #yes {
       background-color: #ff80ab;
@@ -110,15 +109,17 @@
 </head>
 <body>
   <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
     Tarayıcınız audio etiketini desteklemiyor.
   </audio>
+
   <h1>Benimle barışır mısın Feride'm?</h1>
   <div class="buttons">
     <button id="yes">Evet</button>
     <button id="no">Hayır</button>
   </div>
   <div id="message"></div>
+
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
@@ -128,18 +129,16 @@
       message.textContent = "Zaten emindim. Seni seviyorum. 🐼";
     });
 
-    // Buton kaçırma
-    noBtn.addEventListener("mouseenter", () => {
+    noBtn.addEventListener("mouseover", () => {
       const container = document.querySelector(".buttons");
       const maxX = container.offsetWidth - noBtn.offsetWidth;
-      const maxY = 80;
+      const maxY = 100;
       const randomX = Math.floor(Math.random() * maxX);
       const randomY = Math.floor(Math.random() * maxY);
       noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
     });
 
-    // Kalp yağmuru
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -150,6 +149,7 @@
         heart.remove();
       }, 5000);
     }
+
     setInterval(createHeart, 300);
   </script>
 </body>
