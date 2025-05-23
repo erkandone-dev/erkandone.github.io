@@ -52,10 +52,8 @@
     #no {
       background-color: #ccc;
       color: black;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative; /* Burayı fixed'ten relative yaptık */
+      transform: none;
       z-index: 20;
     }
     #message {
@@ -146,6 +144,7 @@
       const maxY = window.innerHeight - noBtn.offsetHeight - padding;
       const randomX = Math.floor(Math.random() * maxX);
       const randomY = Math.floor(Math.random() * maxY);
+      noBtn.style.position = "fixed";  // Kaçarken fixed yapıyoruz
       noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
     }
