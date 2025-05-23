@@ -29,6 +29,8 @@
       gap: 20px;
       position: relative;
       animation: fadeIn 3s;
+      width: 200px;
+      justify-content: center;
     }
     button {
       padding: 10px 25px;
@@ -38,21 +40,30 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
+      user-select: none;
     }
     #yes {
       background-color: #ff80ab;
       color: white;
+      position: relative;
+      z-index: 10;
     }
     #no {
       background-color: #ccc;
       color: black;
-      position: absolute;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
     }
     #message {
       margin-top: 30px;
       font-size: 22px;
       color: #d1005c;
       animation: fadeInUp 2s;
+      min-height: 30px;
     }
     @keyframes fadeInDown {
       from {opacity: 0; transform: translateY(-20px);}
@@ -129,16 +140,25 @@
       message.textContent = "Zaten emindim. Seni seviyorum. 🐼";
     });
 
-    noBtn.addEventListener("mouseover", () => {
-      const container = document.querySelector(".buttons");
-      const maxX = container.offsetWidth - noBtn.offsetWidth;
-      const maxY = 100;
+    function moveNoButton() {
+      const padding = 20;
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
       const randomX = Math.floor(Math.random() * maxX);
       const randomY = Math.floor(Math.random() * maxY);
       noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNoButton();
     });
 
+    noBtn.addEventListener("click", (e) => e.preventDefault());
+
+    // Kalp yağmuru
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
