@@ -38,6 +38,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
     }
     #yes {
       background-color: #ff80ab;
@@ -109,7 +110,7 @@
 </head>
 <body>
   <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
     Tarayıcınız audio etiketini desteklemiyor.
   </audio>
   <h1>Benimle barışır mısın Feride'm?</h1>
@@ -124,10 +125,11 @@
     const message = document.getElementById("message");
 
     yesBtn.addEventListener("click", () => {
-      message.textContent = "Zaten emindim. Seni seviyorum.";
+      message.textContent = "Zaten emindim. Seni seviyorum. 🐼";
     });
 
-    noBtn.addEventListener("mouseover", () => {
+    // Buton kaçırma
+    noBtn.addEventListener("mouseenter", () => {
       const container = document.querySelector(".buttons");
       const maxX = container.offsetWidth - noBtn.offsetWidth;
       const maxY = 80;
@@ -137,6 +139,7 @@
       noBtn.style.top = `${randomY}px`;
     });
 
+    // Kalp yağmuru
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
