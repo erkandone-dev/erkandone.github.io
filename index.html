@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benimle Barışır mısın Feride'm?</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffeef0, #ffc0cb);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 40px;
+      color: #d1005c;
+      animation: fadeInDown 2s;
+    }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      animation: fadeIn 3s;
+    }
+    button {
+      padding: 10px 25px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #yes {
+      background-color: #ff80ab;
+      color: white;
+    }
+    #no {
+      background-color: #ccc;
+      color: black;
+      position: absolute;
+    }
+    #message {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #d1005c;
+      animation: fadeInUp 2s;
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: fall 5s linear infinite;
+      opacity: 0.7;
+    }
+    .heart::before,
+    .heart::after {
+      content: \"\";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src=\"https://www.bensound.com/bensound-music/bensound-love.mp3\" type=\"audio/mp3\">
+    Tarayıcınız audio etiketini desteklemiyor.
+  </audio>
+  <h1>Benimle barışır mısın Feride'm?</h1>
+  <div class=\"buttons\">
+    <button id=\"yes\">Evet</button>
+    <button id=\"no\">Hayır</button>
+  </div>
+  <div id=\"message\"></div>
+  <script>
+    const noBtn = document.getElementById(\"no\");
+    const yesBtn = document.getElementById(\"yes\");
+    const message = document.getElementById(\"message\");
+    yesBtn.addEventListener(\"click\", () => {
+      message.textContent = \"Zaten emindim. Seni seviyorum.\";
+    });
+    noBtn.addEventListener(\"mouseover\", () => {
+      const container = document.querySelector(\".buttons\");
+      const maxX = container.offsetWidth - noBtn.offsetWidth;
+      const maxY = 80;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+    // Kalp yağmuru
+    function createHeart() {
+      const heart = document.createElement(\"div\");
+      heart.className = \"heart\";
+      heart.style.left = Math.random() * 100 + \"vw\";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + \"s\";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
