@@ -77,7 +77,7 @@
     }
     .heart::before,
     .heart::after {
-      content: \"\";
+      content: "";
       position: absolute;
       width: 20px;
       height: 20px;
@@ -109,24 +109,26 @@
 </head>
 <body>
   <audio autoplay loop>
-    <source src=\"https://www.bensound.com/bensound-music/bensound-love.mp3\" type=\"audio/mp3\">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     Tarayıcınız audio etiketini desteklemiyor.
   </audio>
   <h1>Benimle barışır mısın Feride'm?</h1>
-  <div class=\"buttons\">
-    <button id=\"yes\">Evet</button>
-    <button id=\"no\">Hayır</button>
+  <div class="buttons">
+    <button id="yes">Evet</button>
+    <button id="no">Hayır</button>
   </div>
-  <div id=\"message\"></div>
+  <div id="message"></div>
   <script>
-    const noBtn = document.getElementById(\"no\");
-    const yesBtn = document.getElementById(\"yes\");
-    const message = document.getElementById(\"message\");
-    yesBtn.addEventListener(\"click\", () => {
-      message.textContent = \"Zaten emindim. Seni seviyorum.\";
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const message = document.getElementById("message");
+
+    yesBtn.addEventListener("click", () => {
+      message.textContent = "Zaten emindim. Seni seviyorum.";
     });
-    noBtn.addEventListener(\"mouseover\", () => {
-      const container = document.querySelector(\".buttons\");
+
+    noBtn.addEventListener("mouseover", () => {
+      const container = document.querySelector(".buttons");
       const maxX = container.offsetWidth - noBtn.offsetWidth;
       const maxY = 80;
       const randomX = Math.floor(Math.random() * maxX);
@@ -134,12 +136,12 @@
       noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
     });
-    // Kalp yağmuru
+
     function createHeart() {
-      const heart = document.createElement(\"div\");
-      heart.className = \"heart\";
-      heart.style.left = Math.random() * 100 + \"vw\";
-      heart.style.animationDuration = (Math.random() * 2 + 3) + \"s\";
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
       document.body.appendChild(heart);
       setTimeout(() => {
         heart.remove();
